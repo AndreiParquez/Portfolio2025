@@ -50,7 +50,7 @@ function Home() {
         <div className="flex w-full gap-4">
           <img src={myPic} alt="mypic" className="w-24 h-24 rounded-full ring-2 ring-zinc-400 p-1 m-1" />
           <div className="flex flex-col justify-center">
-          <p className="text-center font-semibold tracking-widest text-white text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
+          <p className="text-center font-semibold tracking-widest text-white text-xl xs:text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl">
               Hi, I'm Andrei
               <motion.span
                 className="inline-block"
