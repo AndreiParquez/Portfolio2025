@@ -21,12 +21,12 @@ function Tech() {
       {techStacks.map((tech, index) => (
         <div
           key={index}
-          className="group flex flex-col items-center justify-center px-4 py-2 ring-zinc-700 ring-2 rounded-lg transform transition-transform duration-300 hover:bg-zinc-900"
+          className="group flex flex-col items-center justify-center px-4 py-2 ring-zinc-700 ring-2 rounded-lg transform transition-transform duration-300 hover:bg-zinc-900 sm:px-2 sm:py-1"
         >
-          <div className="flex items-center justify-center w-16 h-16 text-4xl transition-transform duration-300 group-hover:-translate-y-2">
+          <div className="flex items-center justify-center w-16 h-16 text-4xl transition-transform duration-300 group-hover:-translate-y-2 sm:w-12 sm:h-12 sm:text-3xl">
             {tech.icon}
           </div>
-          <p className="text-zinc-500 text-xs transition-colors duration-300 group-hover:text-white">{tech.name}</p>
+          <p className="text-zinc-500 text-xs transition-colors duration-300 group-hover:text-white sm:text-xxs">{tech.name}</p>
         </div>
       ))}
     </div>
