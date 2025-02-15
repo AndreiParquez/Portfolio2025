@@ -17,19 +17,24 @@ const techStacks = [
 
 function Tech() {
   return (
+    <>
+        <div className='my-4'>
+        <span className='text-zinc-300 text-xs px-2 rounded-md py-1 bg-zinc-700 text-start'>Tech Stacks</span>
+        </div>
     <div className="flex flex-wrap gap-4 gap-x-4 justify-center mt-4">
       {techStacks.map((tech, index) => (
         <div
           key={index}
-          className="group flex flex-col items-center justify-center px-4 py-2 ring-zinc-700 ring-2 rounded-lg transform transition-transform duration-300 hover:bg-zinc-900"
+          className="group flex flex-col items-center justify-center px-4 py-2 ring-zinc-700 ring rounded-lg transform transition-transform duration-300 hover:bg-zinc-900"
         >
-          <div className="flex items-center justify-center w-12 h-12 text-3xl transition-transform duration-300 group-hover:-translate-y-2">
+          <div className="flex items-center justify-center w-12 h-12 text-3xl transition-transform duration-300 group-hover:-translate-y-2 hover:cursor-pointer">
             {tech.icon}
           </div>
           <p className="text-zinc-500 text-xs transition-colors duration-300 group-hover:text-white">{tech.name}</p>
         </div>
       ))}
     </div>
+    </>
   );
 }
 

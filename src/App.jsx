@@ -10,7 +10,7 @@ import Contact from './components/contact';
 function App() {
   return (
     <Router>
-      <div className="w-full lg:w-1/3 mx-auto">
+      <div className="w-full sm:w-full md:w-1/2 lg:w-1/2 xl:w-1/3 2xl:1/3  mx-auto">
         <ParticleBg id="particles" />
         <Nav />
         <Routes>

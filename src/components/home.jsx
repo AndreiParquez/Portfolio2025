@@ -5,6 +5,8 @@ import myPic from '../assets/mypic.jpg';
 import '../assets/styles.css'; // Import the CSS file
 import Text from './text.jsx';
 import Tech from './tech.jsx';
+import Projects from './projectsHome.jsx';
+import Footer from './footer.jsx';
 
 
 
@@ -48,7 +50,7 @@ function Home() {
       <div className="w-full h-52 mx-auto px-6">
         <Map />
         <div className="flex w-full gap-4">
-          <img src={myPic} alt="mypic" className="w-24 h-24 rounded-full ring-2 ring-zinc-400 p-1 m-1" />
+          <img src={myPic} alt="mypic" className="w-24 h-24 rounded-full ring-2 ring-zinc-700 p-1 m-1" />
           <div className="flex flex-col justify-center">
           <p className="text-center font-semibold tracking-widest text-white text-xl xs:text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl">
               Hi, I'm Andrei
@@ -88,6 +90,8 @@ function Home() {
         </div>
         <Text />
         <Tech />
+        <Projects />
+        <Footer/>
       </div>
     </div>
   );

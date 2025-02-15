@@ -8,13 +8,13 @@ const Nav = () => {
       </div>
       <ul className="flex space-x-4">
         <li>
-          <a href="#home" className="text-gray-300 hover:text-gray-400">home</a>
+          <a href="#home" className="text-gray-300 hover:text-gray-400">projects</a>
         </li>
         <li>
-          <a href="#about" className="text-gray-300 hover:text-gray-400">about</a>
+          <a href="#about" className="text-gray-300 hover:text-gray-400">contact</a>
         </li>
         <li>
-          <a href="#contact" className="text-gray-300 hover:text-gray-400">contact</a>
+          <a href="#contact" className="text-gray-100 font-bold hover:text-blue-600">CV</a>
         </li>
       </ul>
     </nav>
