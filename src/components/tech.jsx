@@ -17,7 +17,7 @@ const techStacks = [
 
 function Tech() {
   return (
-    <div className="flex flex-wrap gap-4 gap-x-8 justify-center mt-4">
+    <div className="flex flex-wrap gap-4 gap-x-4 justify-center mt-4">
       {techStacks.map((tech, index) => (
         <div
           key={index}
