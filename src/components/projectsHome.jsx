@@ -14,16 +14,16 @@ function ProjectsHome() {
         <span className='text-zinc-300 text-xs px-2 rounded-md py-1 bg-zinc-700 text-start'>Recent Projects</span>
         </div>
         
-        <div className='flex space-x-2'>
+        <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2'>
             <motion.a 
                 href='https://lostpiece.netlify.app/' 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className='flex flex-col w-1/2 ring ring-zinc-700 rounded-lg p-4 hover:cursor-pointer'
+                className='flex flex-col w-full md:w-1/2 ring ring-zinc-700 rounded-lg p-4 hover:cursor-pointer'
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 300 }}
             >
-                <img src={projectPic2} alt="mypic" className=" h-32 rounded-md ring ring-zinc-700 object-cover" />
+                <img src={projectPic2} alt="mypic" className="h-32 rounded-md ring ring-zinc-700 object-cover" />
                 <p className='text-white text-sm my-2'>LostPiece</p>
                 <p className='text-gray-300 text-xs'>Capstone project: A 2d mobile game showcasing philippine art history.</p>
             </motion.a>
@@ -31,11 +31,11 @@ function ProjectsHome() {
                 href='https://annabellscloset.netlify.app/' 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className='flex flex-col w-1/2 ring ring-zinc-700 rounded-lg p-4 hover:cursor-pointer'
+                className='flex flex-col w-full md:w-1/2 ring ring-zinc-700 rounded-lg p-4 hover:cursor-pointer'
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 300 }}
             >
-                <img src={projectPic} alt="mypic2" className=" h-32 rounded-md ring ring-zinc-700 object-cover" />
+                <img src={projectPic} alt="mypic2" className="h-32 rounded-md ring ring-zinc-700 object-cover" />
                 <p className='text-white text-sm my-2'>Annabell's Closet</p>
                 <p className='text-gray-300 text-xs'>A simple ecommerce ukay - ukay website using react and firebase. </p>
             </motion.a>
