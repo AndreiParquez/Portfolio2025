@@ -7,6 +7,7 @@ import Text from './text.jsx';
 import Tech from './tech.jsx';
 import Projects from './projectsHome.jsx';
 import Footer from './footer.jsx';
+import Picture from './picture.jsx';
 
 
 
@@ -91,6 +92,7 @@ function Home() {
         <Text />
         <Tech />
         <Projects />
+        <Picture />
         <Footer/>
       </div>
     </div>
