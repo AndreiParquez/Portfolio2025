@@ -6,10 +6,7 @@ const Nav = () => {
       <div className="text-xl font-bold">andrei</div>
       <ul className="flex space-x-4">
         <li>
-          <a href="#home" className="text-gray-300 hover:text-gray-400">Projects</a>
-        </li>
-        <li>
-          <a href="#about" className="text-gray-300 hover:text-gray-400">Contact</a>
+          <a href="/projects" className="text-gray-400 hover:text-gray-500">projects</a>
         </li>
         <li>
           <a 

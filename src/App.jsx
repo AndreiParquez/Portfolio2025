@@ -4,8 +4,8 @@ import './App.css';
 import ParticleBg from './components/particlebg';
 import Nav from './components/nav';
 import Home from './components/home';
-import About from './components/about';
-import Contact from './components/contact';
+import Project from './components/projects';
+
 
 
 function App() {
@@ -16,8 +16,8 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+         
+          <Route path="/projects" element={<Project />} />
         </Routes>
       </div>
     </Router>

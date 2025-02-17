@@ -47,6 +47,21 @@ function Picture() {
           <img src={modalImage} alt="Modal" className="modal-image" />
         </Modal>
       </div>
+      <div  className='my-6 mt-8 flex flex-col space-y-2'>
+        <div>
+          <p className="text-sm text-white">Gawad Parangal: Top 3 Student 🎖️</p>
+          <p className="text-xs text-gray-400">March 10, 2024</p>
+        </div>
+        <div>
+          <p className="text-sm text-white">Vice-President Lister: 3rd year 🎖️</p>
+          <p className="text-xs text-gray-400">January 10, 2023</p>
+        </div>
+        <div>
+          <p className="text-sm text-white">President Lister: 1st year 🎖️</p>
+          <p className="text-xs text-gray-400">May 21, 2021</p>
+        </div>
+        
+      </div>
     </>
   );
 }
