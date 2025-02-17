@@ -43,7 +43,7 @@ function Picture() {
           className="modal"
           overlayClassName="overlay"
         >
-          <button onClick={handleCloseModal} className="close-button">&times;</button>
+          
           <img src={modalImage} alt="Modal" className="modal-image" />
         </Modal>
       </div>
