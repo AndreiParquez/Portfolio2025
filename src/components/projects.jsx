@@ -24,13 +24,13 @@ function projects() {
                 />
             </div>
             <div className='my-4'>
-                <p className='text-white'>Project Name</p>
-                <p className='text-gray-400 text-sm'>Project Description</p>
+                <p className='text-white'>Lost Piece</p>
+                <p className='text-gray-400 text-sm'> A 2d mobile game showcasing philippine art history.</p>
                 <div className='flex space-x-2 text-sm mt-1 font-semibold'>
-                    <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/AndreiParquez/Lostpiecewebsite" target="_blank" rel="noopener noreferrer">
                       <button className='flex items-center text-white ring ring-zinc-700 p-2 px-5 rounded-md hover:cursor-pointer'><FaGithub className='mr-2'/>Source</button>
                     </a>
-                    <a href="https://your-project-link.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://lostpiece.netlify.app/" target="_blank" rel="noopener noreferrer">
                       <button className='flex items-center bg-white text-zinc-900 p-2 rounded-md px-5 hover:cursor-pointer'><FiGlobe className='mr-2'/>Visit</button>
                     </a>
                 </div>
@@ -49,13 +49,13 @@ function projects() {
                 />
             </div>
             <div className='my-4'>
-                <p className='text-white'>Project Name</p>
-                <p className='text-gray-400 text-sm'>Project Description</p>
+                <p className='text-white'>Annabell's Closet</p>
+                <p className='text-gray-400 text-sm'>A react web application for annabells ukay-ukay bussiness</p>
                 <div className='flex space-x-2 text-sm mt-1 font-semibold'>
-                    <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/AndreiParquez/Annabel" target="_blank" rel="noopener noreferrer">
                       <button className='flex items-center text-white ring ring-zinc-700 p-2 px-5 rounded-md hover:cursor-pointer'><FaGithub className='mr-2'/>Source</button>
                     </a>
-                    <a href="https://your-project-link.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://annabellscloset.netlify.app/" target="_blank" rel="noopener noreferrer">
                       <button className='flex items-center bg-white text-zinc-900 p-2 rounded-md px-5 hover:cursor-pointer'><FiGlobe className='mr-2'/>Visit</button>
                     </a>
                 </div>
@@ -74,13 +74,13 @@ function projects() {
                 />
             </div>
             <div className='my-4'>
-                <p className='text-white'>Project Name</p>
-                <p className='text-gray-400 text-sm'>Project Description</p>
+                <p className='text-white'>Anime Tambayan</p>
+                <p className='text-gray-400 text-sm'>Anime Streaming website using Animedex Api</p>
                 <div className='flex space-x-2 text-sm mt-1 font-semibold'>
-                    <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/AndreiParquez/anime" target="_blank" rel="noopener noreferrer">
                       <button className='flex items-center text-white ring ring-zinc-700 p-2 px-5 rounded-md hover:cursor-pointer'><FaGithub className='mr-2'/>Source</button>
                     </a>
-                    <a href="https://your-project-link.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://animetambayan.netlify.app/" target="_blank" rel="noopener noreferrer">
                       <button className='flex items-center bg-white text-zinc-900 p-2 rounded-md px-5 hover:cursor-pointer'><FiGlobe className='mr-2'/>Visit</button>
                     </a>
                 </div>
