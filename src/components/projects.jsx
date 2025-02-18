@@ -10,8 +10,11 @@ import Footer from './footer.jsx';
 
 function projects() {
   return (
-    <>
-    <div className='flex flex-col space-y-16 px-6' >
+    <div className='px-6'>
+    <div className='flex flex-col space-y-16 ' >
+      <div>
+        <span className='text-zinc-100  rounded-md py-1  text-start'>Recent Projects</span>
+      </div>
         <div className='group'>
             <div className='flex flex-col w-full bg-gradient-to-b from-zinc-800 to-transparent rounded-md px-6 pt-5 overflow-hidden hover:cursor-pointer group-hover:from-blue-900'>
                 <motion.img 
@@ -26,7 +29,7 @@ function projects() {
             <div className='my-4'>
                 <p className='text-white'>Lost Piece</p>
                 <p className='text-gray-400 text-sm'> A 2d mobile game showcasing philippine art history.</p>
-                <div className='flex space-x-2 text-sm mt-1 font-semibold'>
+                <div className='flex space-x-2 text-sm mt-3 font-semibold'>
                     <a href="https://github.com/AndreiParquez/Lostpiecewebsite" target="_blank" rel="noopener noreferrer">
                       <button className='flex items-center text-white ring ring-zinc-700 p-2 px-5 rounded-md hover:cursor-pointer'><FaGithub className='mr-2'/>Source</button>
                     </a>
@@ -51,7 +54,7 @@ function projects() {
             <div className='my-4'>
                 <p className='text-white'>Annabell's Closet</p>
                 <p className='text-gray-400 text-sm'>A react web application for annabells ukay-ukay bussiness</p>
-                <div className='flex space-x-2 text-sm mt-1 font-semibold'>
+                <div className='flex space-x-2 text-sm mt-3 font-semibold'>
                     <a href="https://github.com/AndreiParquez/Annabel" target="_blank" rel="noopener noreferrer">
                       <button className='flex items-center text-white ring ring-zinc-700 p-2 px-5 rounded-md hover:cursor-pointer'><FaGithub className='mr-2'/>Source</button>
                     </a>
@@ -76,7 +79,7 @@ function projects() {
             <div className='my-4'>
                 <p className='text-white'>Anime Tambayan</p>
                 <p className='text-gray-400 text-sm'>Anime Streaming website using Animedex Api</p>
-                <div className='flex space-x-2 text-sm mt-1 font-semibold'>
+                <div className='flex space-x-2 text-sm mt-3 font-semibold'>
                     <a href="https://github.com/AndreiParquez/anime" target="_blank" rel="noopener noreferrer">
                       <button className='flex items-center text-white ring ring-zinc-700 p-2 px-5 rounded-md hover:cursor-pointer'><FaGithub className='mr-2'/>Source</button>
                     </a>
@@ -89,7 +92,7 @@ function projects() {
 
     </div>
     <Footer />
-    </>
+    </div>
   )
 }
 
