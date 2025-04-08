@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Map from './map';
 import myPic from '../assets/mypic.jpg';
+import myPicCartoon from '../assets/cartoon.png';
 import '../assets/styles.css'; // Import the CSS file
 import Text from './text.jsx';
 import Tech from './tech.jsx';
 import Projects from './projectsHome.jsx';
 import Footer from './footer.jsx';
 import Picture from './picture.jsx';
-
-
 
 const rollingTextVariants = {
   animate: {
@@ -45,15 +44,32 @@ const waveVariants = {
 
 function Home() {
   const [isHovered, setIsHovered] = useState(false);
+  const [imageSrc, setImageSrc] = useState(myPic);
+
+  const handleMouseEnter = () => {
+    setImageSrc(myPicCartoon);
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setImageSrc(myPic);
+    setIsHovered(false);
+  };
 
   return (
     <div>
       <div className="w-full h-52 mx-auto px-6">
         <Map />
         <div className="flex w-full gap-4">
-          <img src={myPic} alt="mypic" className="w-24 h-24 rounded-full ring-2 ring-zinc-700 p-1 m-1" />
+          <img
+            src={imageSrc}
+            alt="mypic"
+            className="w-24 h-24 rounded-full ring-2 ring-zinc-700 p-1 m-1"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          />
           <div className="flex flex-col justify-center">
-          <p className="text-center font-semibold tracking-widest text-white text-xl xs:text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl">
+            <p className="text-center font-semibold tracking-widest text-white text-xl xs:text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl">
               Hi, I'm Andrei
               <motion.span
                 className="inline-block"
@@ -65,7 +81,7 @@ function Home() {
                 👋
               </motion.span>
             </p>
-            <div className='flex items-center'>
+            <div className="flex items-center">
               <span className="green-circle"></span>
               <div
                 className="text-white rolling-text-container"
@@ -78,7 +94,7 @@ function Home() {
                   initial="initial"
                   animate={isHovered ? 'animate' : 'exit'} // Smooth transition out
                 >
-                  <div className="text">Looking for Internship</div>
+                  <div className="text">Looking for Job</div>
                   <div className="text">Frontend Developer</div>
                   <div className="text">Game Developer</div>
                   <div className="text">Loves Anime</div>
@@ -93,7 +109,7 @@ function Home() {
         <Tech />
         <Projects />
         <Picture />
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );
