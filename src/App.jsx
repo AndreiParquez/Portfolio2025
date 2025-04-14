@@ -5,6 +5,12 @@ import ParticleBg from './components/particlebg';
 import Nav from './components/nav';
 import Home from './components/home';
 import Project from './components/projects';
+import { Helmet } from "react-helmet";
+
+<Helmet>
+  <link rel="canonical" href="https://andreidev.netlify.app/" />
+</Helmet>
+
 
 
 

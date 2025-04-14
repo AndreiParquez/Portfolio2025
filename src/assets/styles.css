@@ -205,3 +205,8 @@
     max-width: 100%;
     max-height: 80vh;
   }
+
+  .github-contribution-chart {
+    margin: 20px 0;
+    text-align: center;
+  }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Map from './map';
 import myPic from '../assets/mypic.jpg';
@@ -111,6 +111,7 @@ function Home() {
         <Picture />
         <Footer />
       </div>
+      
     </div>
   );
 }
