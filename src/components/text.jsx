@@ -1,10 +1,13 @@
-import React from 'react';
+import React from "react";
 
 function Text() {
   return (
     <div>
-      <p className='text-white text-justify mt-4 mb-5 text-sm'>
-        I love bringing ideas to life through <span className='highlight'>front-end </span> and <span className='highlight'>game development</span>. I enjoy creating <span className='highlight2'>cool</span> and <span className='highlight2'>interactive </span>experiences, always looking for new ways to improve and innovate.
+      <p className="text-white text-justify mt-4 mb-5 text-sm">
+        I love bringing ideas to life with code especially through{" "}
+        <span className="highlight">front-end</span> and{" "}
+        <span className="highlight">game development</span>. Making things
+        fun, interactive, and always better is what drives me.
       </p>
     </div>
   );

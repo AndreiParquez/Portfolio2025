@@ -19,7 +19,7 @@ function ProjectsHome() {
                 href='https://lostpiece.netlify.app/' 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className='flex flex-col w-full md:w-1/2 ring ring-zinc-700 rounded-lg p-4 hover:cursor-pointer'
+                className='flex flex-col w-full md:w-1/2 ring ring-zinc-700 rounded-lg p-4 hover:cursor-pointer hover:bg-zinc-800  hover:ring-zinc-500 hover:text-white'
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 300 }}
             >
@@ -31,7 +31,7 @@ function ProjectsHome() {
                 href='https://annabellscloset.netlify.app/' 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className='flex flex-col w-full md:w-1/2 ring ring-zinc-700 rounded-lg p-4 hover:cursor-pointer'
+                className='flex flex-col w-full md:w-1/2 ring ring-zinc-700 rounded-lg p-4 hover:cursor-pointer hover:bg-zinc-800  hover:ring-zinc-500 hover:text-white'
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 300 }}
             >

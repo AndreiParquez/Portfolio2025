@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Map from './map';
 import myPic from '../assets/mypic.jpg';
 import myPicCartoon from '../assets/cartoon.png';
-import '../assets/styles.css'; // Import the CSS file
+import '../assets/styles.css';
 import Text from './text.jsx';
 import Tech from './tech.jsx';
 import Projects from './projectsHome.jsx';
@@ -15,7 +15,7 @@ const rollingTextVariants = {
     y: [0, -20, -40, -60, -80, -100],
     transition: {
       y: {
-        duration: 5, // Smoother transition
+        duration: 5,
         ease: 'easeInOut',
         repeat: Infinity,
         repeatType: 'loop',
@@ -26,7 +26,7 @@ const rollingTextVariants = {
   exit: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.5, ease: 'easeOut' }, // Smooth return
+    transition: { duration: 0.5, ease: 'easeOut' }, 
   },
 };
 
@@ -37,7 +37,7 @@ const waveVariants = {
       duration: 1.5,
       ease: 'easeInOut',
       repeat: Infinity,
-      repeatDelay: 3, // Delay between each repeat to make it play every 4 seconds
+      repeatDelay: 3, 
     },
   },
 };
@@ -73,7 +73,7 @@ function Home() {
               Hi, I'm Andrei
               <motion.span
                 className="inline-block"
-                style={{ transformOrigin: 'bottom right' }} // Set the transform origin to bottom right
+                style={{ transformOrigin: 'bottom right' }}
                 variants={waveVariants}
                 initial="initial"
                 animate="wave"
@@ -92,7 +92,7 @@ function Home() {
                   className="rolling-text text-gray-400 text-sm"
                   variants={rollingTextVariants}
                   initial="initial"
-                  animate={isHovered ? 'animate' : 'exit'} // Smooth transition out
+                  animate={isHovered ? 'animate' : 'exit'} 
                 >
                   <div className="text">Looking for Job</div>
                   <div className="text">Frontend Developer</div>

@@ -12,7 +12,6 @@ const techStacks = [
   { name: 'Node.js', icon: <FaNodeJs className="text-gray-500 group-hover:text-green-500" /> },
   { name: 'MySQL', icon: <SiMysql className="text-gray-500 group-hover:text-blue-500" /> },
 
-  // Add more tech stacks as needed
 ];
 
 function Tech() {
@@ -25,7 +24,7 @@ function Tech() {
       {techStacks.map((tech, index) => (
         <div
           key={index}
-          className="group flex flex-col items-center justify-center px-4 py-2 ring-zinc-700 ring rounded-lg transform transition-transform duration-300 hover:bg-zinc-900"
+          className="group flex flex-col  items-center justify-center px-4 py-2 ring-zinc-700 ring rounded-lg transform transition-transform duration-300 hover:bg-zinc-800 hover:!cursor-pointer hover:scale-105 hover:ring-zinc-500 hover:text-white"
         >
           <div className="flex items-center justify-center w-12 h-12 text-3xl transition-transform duration-300 group-hover:-translate-y-2 hover:cursor-pointer">
             {tech.icon}
