@@ -27,6 +27,7 @@ function projects() {
                 initial={{ y: 10 }}
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
+                loading="lazy"
               />
             </div>
             <div className="my-4">
@@ -69,6 +70,7 @@ function projects() {
                 initial={{ y: 10 }}
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
+                loading="lazy"
               />
             </div>
             <div className="my-4">
@@ -110,6 +112,7 @@ function projects() {
                 initial={{ y: 10 }}
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
+                loading="lazy"
               />
             </div>
             <div className="my-4">
