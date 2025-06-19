@@ -69,7 +69,7 @@ function Home() {
             onMouseLeave={handleMouseLeave}
           />
           <div className="flex flex-col justify-center">
-            <p className="text-center font-semibold tracking-widest text-white text-xl xs:text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl">
+            <h1 className="text-center font-semibold tracking-widest text-white text-xl xs:text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl">
               Hi, I'm Andrei
               <motion.span
                 className="inline-block"
@@ -80,7 +80,7 @@ function Home() {
               >
                 👋
               </motion.span>
-            </p>
+            </h1>
             <div className="flex items-center">
               <span className="green-circle"></span>
               <div
@@ -88,6 +88,13 @@ function Home() {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
+                {/* Visually hidden for SEO benefit */}
+                <ul className="sr-only">
+                  <li>Frontend Developer</li>
+                  <li>Game Developer</li>
+                  <li>Loves Anime</li>
+                  <li>Creator</li>
+                </ul>
                 <motion.div
                   className="rolling-text text-gray-400 text-sm"
                   variants={rollingTextVariants}
