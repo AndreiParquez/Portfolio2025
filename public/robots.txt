@@ -1,0 +1,3 @@
+Sitemap: https://andreidev.netlify.app/sitemap.xml
+User-agent: *
+Allow: /
