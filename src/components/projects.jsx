@@ -10,6 +10,16 @@ import Footer from "./footer.jsx";
 
 function projects() {
   return (
+      <Helmet>
+        <title>Projects | Andrei Parquez Portfolio</title>
+        <meta name="description" content="Explore projects by Andrei Parquez, including web apps, mobile games, and anime streaming platforms built with React and other modern tools." />
+        <meta property="og:title" content="Projects | Andrei Parquez Portfolio" />
+        <meta property="og:description" content="Check out Lost Piece, Annabell's Closet, and Anime Tambayan - creative projects built with React and Netlify." />
+        <meta property="og:image" content="https://andreidev.netlify.app/preview.png" />
+        <meta property="og:url" content="https://andreidev.netlify.app/projects" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://andreidev.netlify.app/projects" />
+      </Helmet>
     <div className="px-6">
       <div className="flex flex-col ">
         <div>
