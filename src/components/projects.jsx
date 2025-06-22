@@ -34,7 +34,7 @@ function projects() {
               <div className="flex flex-col  w-full bg-gradient-to-b from-zinc-800 to-transparent rounded-md px-6 pt-5 overflow-hidden hover:cursor-pointer group-hover:from-blue-900">
                 <motion.img
                   src={projectPic}
-                  alt="mypic"
+                  alt="Andrei Parquez Web Projects Portfolio"
                   className="h-64 rounded-sm ring ring-zinc-700 object-cover"
                   initial={{ y: 10 }}
                   whileHover={{ y: -5 }}
@@ -77,7 +77,7 @@ function projects() {
               <div className="flex flex-col w-full bg-gradient-to-b from-zinc-800 to-transparent rounded-md px-6 pt-5 overflow-hidden hover:cursor-pointer group-hover:from-green-900">
                 <motion.img
                   src={projectPic2}
-                  alt="mypic"
+                  alt="Andrei Parquez Web Projects Portfolio"
                   className="h-64 rounded-sm ring ring-zinc-700 object-cover"
                   initial={{ y: 10 }}
                   whileHover={{ y: -5 }}
@@ -119,7 +119,7 @@ function projects() {
               <div className="flex flex-col w-full bg-gradient-to-b from-zinc-800 to-transparent rounded-md px-6 pt-5 overflow-hidden hover:cursor-pointer group-hover:from-yellow-900">
                 <motion.img
                   src={projectPic4}
-                  alt="mypic"
+                  alt="Andrei Parquez Web Projects Portfolio"
                   className="h-64 rounded-sm ring ring-zinc-700 object-cover"
                   initial={{ y: 10 }}
                   whileHover={{ y: -5 }}
