@@ -79,7 +79,7 @@ export default function DinoMinigame() {
    ></div>
    <div
     ref={cactusRef}
-    className="absolute bottom-0 left-full w-10 h-20 bg-red-500"
+    className="absolute bottom-0 left-full w-10 h-14 bg-red-500"
    ></div>
    <div className="absolute top-2 left-2 text-white text-sm font-mono">
     Score: {score}
