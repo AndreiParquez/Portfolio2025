@@ -1,6 +1,8 @@
-import { use, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import runningSprite from "../assets/cat/running.gif";
 import jumpingSprite from "../assets/cat/jumping.gif";
+import deathSprite from "../assets/cat/gameover.png";
+import idleSprite from "../assets/cat/idle.gif";
 import jumpSound from "../assets/audio/jump.mp3";
 import bgMusic from "../assets/audio/bg-music.mp3";
 import meowSound from "../assets/audio/meow.mp3";
@@ -12,7 +14,10 @@ export default function DinoMinigame() {
   const dinoRef = useRef(null);
   const cactusRef = useRef(null);
   const [isJumping, setIsJumping] = useState(false);
+  const [isIdle, setIsIdle] = useState(true);
+  const [isDeath, setIsDeath] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [isGameStart, setIsGameStart] = useState(false);
   const [score, setScore] = useState(0);
 
   const jumpAudioRef = useRef(null);
@@ -24,6 +29,13 @@ export default function DinoMinigame() {
     meowAudioRef.current = new Audio(meowSound);
     bgMusicRef.current = new Audio(bgMusic);
     bgMusicRef.current.loop = true;
+  }, []);
+  useEffect(() => {
+    const images = [runningSprite, jumpingSprite, deathSprite, idleSprite];
+    images.forEach((src) => {
+      const img = new window.Image();
+      img.src = src;
+    });
   }, []);
 
   // For manual animation
@@ -38,26 +50,13 @@ export default function DinoMinigame() {
     setIsJumping(true);
     dinoRef.current.classList.add("jump");
     if (jumpAudioRef.current) {
-      jumpAudioRef.current.currentTime = 0; 
+      jumpAudioRef.current.currentTime = 0;
       jumpAudioRef.current.play();
     }
     setTimeout(() => {
       dinoRef.current.classList.remove("jump");
       setIsJumping(false);
     }, 600);
-  };
-  useEffect(() => {
-    console.log("Jumping state changed:", isJumping);
-  }, [isJumping]);
-
-  // Handle restart
-  const restart = () => {
-    setScore(0);
-    setIsGameOver(false);
-    cactusXRef.current = GAME_WIDTH;
-    speedRef.current = 200;
-    lastTimeRef.current = undefined;
-    requestRef.current = requestAnimationFrame(gameLoop);
   };
 
   // Main game loop
@@ -66,7 +65,7 @@ export default function DinoMinigame() {
     if (!bgMusicRef.current.paused) {
       bgMusicRef.current.play();
     } else {
-      bgMusicRef.current.currentTime = 0; // Restart music if paused
+      bgMusicRef.current.currentTime = 0;
       bgMusicRef.current.play();
     }
     if (!lastTimeRef.current) lastTimeRef.current = timestamp;
@@ -88,8 +87,6 @@ export default function DinoMinigame() {
     if (cactusRef.current) {
       cactusRef.current.style.left = `${cactusXRef.current}px`;
     }
-
-    // Collision detection
     // Collision detection using vertical position
     if (cactusXRef.current < 96 && cactusXRef.current > 48) {
       const dinoBottom = dinoRef.current?.getBoundingClientRect().bottom;
@@ -98,8 +95,12 @@ export default function DinoMinigame() {
 
       if (dinoBottom && gameBottom && gameBottom - dinoBottom < 25) {
         setIsGameOver(true);
+        setIsDeath(true);
+        setIsJumping(false);
+        setIsIdle(false);
+      
+        console.log("Game Over!");
         bgMusicRef.current.pause();
-
         return;
       }
     }
@@ -109,13 +110,29 @@ export default function DinoMinigame() {
 
   // Start/stop game loop
   useEffect(() => {
-    if (!isGameOver) {
+    if (isGameStart && !isGameOver) {
       cactusXRef.current = GAME_WIDTH;
       lastTimeRef.current = undefined;
       requestRef.current = requestAnimationFrame(gameLoop);
     }
     return () => cancelAnimationFrame(requestRef.current);
-  }, [isGameOver, score]);
+    // eslint-disable-next-line
+  }, [isGameStart, isGameOver]);
+
+  function startGame() {
+    if (!isGameOver) {
+      setIsGameStart(true);
+      setIsIdle(false);
+    }
+  }
+  // Handle restart
+  const restart = () => {
+    setIsDeath(false);
+    setScore(0);
+    setIsGameOver(false);
+    speedRef.current = 200;
+    setIsGameStart(true);
+  };
 
   // Keyboard controls
   useEffect(() => {
@@ -144,7 +161,15 @@ export default function DinoMinigame() {
         className={`absolute left-12 bottom-0 w-12 h-12 rounded jumpAnim`}
       >
         <img
-          src={isJumping ? jumpingSprite : runningSprite}
+          src={
+            isJumping
+              ? jumpingSprite
+              : isDeath
+              ? deathSprite
+              : isIdle
+              ? idleSprite
+              : runningSprite
+          }
           alt="Dino"
           className="w-full h-full object-cover cat "
         />
@@ -165,6 +190,17 @@ export default function DinoMinigame() {
             onClick={restart}
           >
             Restart
+          </button>
+        </div>
+      )}
+
+      {!isGameStart && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/80 text-white text-xl font-bold">
+          <button
+            className="ml-4 px-3 py-1 bg-white text-black"
+            onClick={startGame}
+          >
+            Start
           </button>
         </div>
       )}
