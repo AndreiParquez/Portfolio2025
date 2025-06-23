@@ -240,7 +240,7 @@
 }
 
 .jump {
-  animation: jumpAnim 0.6s;
+  animation: jumpAnim 0.7s;
 }
 
 @keyframes jumpAnim {
