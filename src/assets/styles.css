@@ -240,17 +240,17 @@
 }
 
 .jump {
-  animation: jumpAnim 0.5s ease-out;
+  animation: jumpAnim 0.8s ;
 }
 
 @keyframes jumpAnim {
   0% {
-    top: 140px;
+    bottom: 0px;
   }
   50% {
-    top: 80px;
+    bottom: 130px;
   }
   100% {
-    top: 140px;
+    bottom: 0px;
   }
 }

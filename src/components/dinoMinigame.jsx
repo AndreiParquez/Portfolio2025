@@ -68,7 +68,7 @@ export default function DinoMinigame() {
     <div className="relative w-full h-64 bg-gray-800 overflow-hidden" onClick={jump}>
       <div
         ref={dinoRef}
-        className="absolute left-12 top-[140px] w-12 h-12 bg-green-500 rounded jumpAnim"
+        className="absolute left-12 bottom-0 w-12 h-12 bg-green-500 rounded jumpAnim"
       ></div>
 
       <div
