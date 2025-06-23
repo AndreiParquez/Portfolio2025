@@ -12,11 +12,6 @@ const App = () => {
       setInit(true);
     });
   }, []);
-
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
-
   const options = useMemo(
     () => ({
       background: {
@@ -37,10 +32,10 @@ const App = () => {
       },
       particles: {
         color: {
-          value: '#ffffff', // White particles to resemble stars
+          value: '#ffffff', 
         },
         links: {
-          enable: false, // No links between particles
+          enable: false, 
         },
         move: {
           direction: 'none',
@@ -78,7 +73,6 @@ const App = () => {
     return (
       <Particles
         id="tsparticles"
-        particlesLoaded={particlesLoaded}
         options={options}
       />
     );

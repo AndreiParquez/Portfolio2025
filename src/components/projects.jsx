@@ -64,7 +64,7 @@ function projects() {
           content="https://andreidev.netlify.app/projects"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://andreidev.netlify.app/projects" />
+        <link rel="canonical" href="https://andreidev.tech/projects" />
       </Helmet>
       <div className="px-6">
         <div className="flex flex-col ">

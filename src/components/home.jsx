@@ -1,14 +1,15 @@
-import React, { useState,useEffect } from 'react';
-import { motion } from 'framer-motion';
-import Map from './map';
-import myPic from '../assets/mypic.jpg';
-import myPicCartoon from '../assets/cartoon.png';
-import '../assets/styles.css';
-import Text from './text.jsx';
-import Tech from './tech.jsx';
-import Projects from './projectsHome.jsx';
-import Footer from './footer.jsx';
-import Picture from './picture.jsx';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import Map from "./map";
+import myPic from "../assets/mypic.jpg";
+import myPicCartoon from "../assets/cartoon.png";
+import "../assets/styles.css";
+import Text from "./text.jsx";
+import Tech from "./tech.jsx";
+import Projects from "./projectsHome.jsx";
+import Footer from "./footer.jsx";
+import Picture from "./picture.jsx";
+import SliderImage from "./Slider.jsx";
 
 const rollingTextVariants = {
   animate: {
@@ -16,9 +17,9 @@ const rollingTextVariants = {
     transition: {
       y: {
         duration: 5,
-        ease: 'easeInOut',
+        ease: "easeInOut",
         repeat: Infinity,
-        repeatType: 'loop',
+        repeatType: "loop",
       },
     },
   },
@@ -26,7 +27,7 @@ const rollingTextVariants = {
   exit: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.5, ease: 'easeOut' }, 
+    transition: { duration: 0.5, ease: "easeOut" },
   },
 };
 
@@ -35,9 +36,9 @@ const waveVariants = {
     rotate: [0, 20, -20, 20, -20, 0],
     transition: {
       duration: 1.5,
-      ease: 'easeInOut',
+      ease: "easeInOut",
       repeat: Infinity,
-      repeatDelay: 3, 
+      repeatDelay: 3,
     },
   },
 };
@@ -73,7 +74,7 @@ function Home() {
               Hi, I'm Andrei
               <motion.span
                 className="inline-block"
-                style={{ transformOrigin: 'bottom right' }}
+                style={{ transformOrigin: "bottom right" }}
                 variants={waveVariants}
                 initial="initial"
                 animate="wave"
@@ -99,7 +100,7 @@ function Home() {
                   className="rolling-text text-gray-400 text-sm"
                   variants={rollingTextVariants}
                   initial="initial"
-                  animate={isHovered ? 'animate' : 'exit'} 
+                  animate={isHovered ? "animate" : "exit"}
                 >
                   <div className="text">Looking for Job</div>
                   <div className="text">Frontend Developer</div>
@@ -115,10 +116,11 @@ function Home() {
         <Text />
         <Tech />
         <Projects />
+        <SliderImage />
+
         <Picture />
         <Footer />
       </div>
-      
     </div>
   );
 }
