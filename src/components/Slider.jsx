@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
-
+import { RiArrowRightSLine } from "react-icons/ri";
+import { RiArrowLeftSLine } from "react-icons/ri";
 const images = [
   "https://picsum.photos/id/237/900/900",
   "https://picsum.photos/id/238/900/900",
@@ -54,55 +55,77 @@ export default function ImageSlider() {
   };
 
   return (
-    <div
-      className="relative w-full max-w-4xl mx-auto overflow-hidden mt-10 rounded-xl"
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      ref={containerRef}
-    >
-      <motion.div
-        className="flex"
-        animate={{ x: -currentIndex * containerWidth }}
-        transition={{ duration: 0.6, ease: [0.42, 0, 0.58, 1] }} 
-        style={{
-          width: `${images.length * 100}%`,
-          willChange: "transform", 
-        }}
-      >
-        {images.map((src, index) => (
-          <div
-            key={index}
-            className="flex-shrink-0 relative"
-            style={{ width: `${containerWidth}px` }}
-          >
-            <img
-              src={src}
-              alt={`Slide ${index}`}
-              className="h-64 w-full object-cover "
-              draggable={false}
-            />
-            <div className="h-10 bg-black/50  p-1 absolute bottom-0 w-full">
-              <p className=" text-white text-xs">Slide {index + 1}</p>
-            </div>
-          </div>
-        ))}
-      </motion.div>
-
-      {/* Navigation */}
-      <div className="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
-        <button
-          onClick={prev}
-          className="bg-black/50 text-white p-2 rounded hover:bg-black/70 pointer-events-auto"
-        >
-          ◀
-        </button>
-        <button
-          onClick={next}
-          className="bg-black/50 text-white p-2 rounded hover:bg-black/70 pointer-events-auto"
-        >
-          ▶
-        </button>
+    <>
+      <div className="my-4">
+        <span className="text-zinc-300 text-xs px-2 rounded-md py-1 bg-zinc-700 text-start">
+          Gallery
+        </span>
       </div>
-    </div>
+
+      <div
+        className="relative w-full max-w-4xl mx-auto overflow-hidden  rounded-xl "
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        ref={containerRef}
+      >
+        <motion.div
+          className="flex"
+          animate={{ x: -currentIndex * containerWidth }}
+          transition={{ duration: 0.6, ease: [0.42, 0, 0.58, 1] }}
+          style={{
+            width: `${images.length * 100}%`,
+            willChange: "transform",
+          }}
+        >
+          {images.map((src, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 relative"
+              style={{ width: `${containerWidth}px` }}
+            >
+              <img
+                src={src}
+                alt={`Slide ${index}`}
+                className="h-64 w-full object-cover "
+                draggable={false}
+              />
+              <div className="h-10 bg-black/50  p-1 absolute bottom-0 w-full">
+                <p className=" text-white text-xs">Slide {index + 1}</p>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Navigation */}
+        <div className="absolute inset-0 flex items-center justify-between px-2 pointer-events-none">
+          <motion.button
+            onClick={prev}
+            className="bg-black/10 text-white p-2 rounded-full hover:bg-black/50 pointer-events-auto"
+            animate={{ y: [0, -4, 0] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
+          >
+            <RiArrowLeftSLine size={24} />
+          </motion.button>
+          <motion.button
+            onClick={next}
+            className="bg-black/10 text-white p-2 rounded-full hover:bg-black/50 pointer-events-auto"
+            animate={{ y: [0, -4, 0] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
+          >
+            <RiArrowRightSLine size={24} />
+          </motion.button>
+        </div>
+      </div>
+    </>
   );
 }

@@ -228,3 +228,29 @@
     background: linear-gradient(rgba(255, 255, 255, 0), transparent);
     backdrop-filter: blur(20px);
   }
+
+
+  @keyframes cactusMove {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -50px;
+  }
+}
+
+.jump {
+  animation: jumpAnim 0.5s ease-out;
+}
+
+@keyframes jumpAnim {
+  0% {
+    top: 140px;
+  }
+  50% {
+    top: 80px;
+  }
+  100% {
+    top: 140px;
+  }
+}
