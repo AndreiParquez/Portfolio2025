@@ -28,7 +28,7 @@ function ProjectsHome() {
           <img
             src={projectPic2}
             alt="Andrei Parquez Web Developer Project Lost Piece"
-            className="h-32 md:h-48 lg:h-32 rounded-md ring ring-zinc-700 object-cover"
+            className="h-48 md:h-48 lg:h-32 rounded-md ring ring-zinc-700 object-cover"
           />
           <p className="text-white text-sm my-2">LostPiece</p>
           <p className="text-gray-300 text-xs">
