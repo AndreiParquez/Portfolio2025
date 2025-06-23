@@ -32,7 +32,7 @@ export default function DinoMinigame() {
       dinoRef.current.classList.remove("jump");
       console.log("Jump ended");
       setIsJumping(false);
-    }, 1000);
+    }, 600);
   };
   useEffect(() => {
     console.log("Jumping state changed:", isJumping);
@@ -78,8 +78,7 @@ export default function DinoMinigame() {
       const gameBottom =
         dinoRef.current?.parentElement?.getBoundingClientRect().bottom;
 
-      if (dinoBottom && gameBottom && gameBottom - dinoBottom < 10) {
-        // Dino is on the ground or nearly there
+      if (dinoBottom && gameBottom && gameBottom - dinoBottom < 25) {
         setIsGameOver(true);
         return;
       }
@@ -118,7 +117,7 @@ export default function DinoMinigame() {
 
   return (
     <div
-      className="relative w-full max-w-xl h-64 bg-gray-800 overflow-hidden"
+      className="relative w-full max-w-xl h-64  overflow-hidden"
       
       onClick={jump}
     >
@@ -129,7 +128,7 @@ export default function DinoMinigame() {
         <img
           src={isJumping ? jumpingSprite : runningSprite}
           alt="Dino"
-          className="w-full h-full object-cover cat bg-amber-400"
+          className="w-full h-full object-cover cat "
         />
       </div>
       <div
