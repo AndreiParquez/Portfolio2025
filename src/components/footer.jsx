@@ -22,7 +22,7 @@ function footer() {
             </a>
         </div>
         <div className='flex items-center justify-center py-4 text-zinc-400 text-sm'>
-            <p>© 2025 Andrei Parquez</p>
+            <p>© {new Date().getFullYear()} Andrei Parquez</p>
         </div>
     </div>
   )
