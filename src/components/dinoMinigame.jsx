@@ -98,6 +98,8 @@ export default function DinoMinigame() {
 
       if (dinoBottom && gameBottom && gameBottom - dinoBottom < 25) {
         setIsGameOver(true);
+        bgMusicRef.current.pause();
+
         return;
       }
     }
@@ -113,7 +115,6 @@ export default function DinoMinigame() {
       requestRef.current = requestAnimationFrame(gameLoop);
     }
     return () => cancelAnimationFrame(requestRef.current);
-    // eslint-disable-next-line
   }, [isGameOver, score]);
 
   // Keyboard controls
