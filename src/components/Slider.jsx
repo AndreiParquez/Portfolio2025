@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 
 const images = [
-  "https://picsum.photos/id/237/100/100",
-  "https://picsum.photos/id/238/200/300",
-  "https://picsum.photos/id/239/200/300",
-  "https://picsum.photos/id/240/200/300",
-  "https://picsum.photos/id/241/200/300",
+  "https://picsum.photos/id/237/900/900",
+  "https://picsum.photos/id/238/900/900",
+  "https://picsum.photos/id/239/900/900",
+  "https://picsum.photos/id/240/900/900",
+  "https://picsum.photos/id/241/900/900",
 ];
 
 export default function ImageSlider() {
@@ -55,7 +55,7 @@ export default function ImageSlider() {
 
   return (
     <div
-      className="relative w-full max-w-4xl mx-auto overflow-hidden mt-10"
+      className="relative w-full max-w-4xl mx-auto overflow-hidden mt-10 rounded-xl"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       ref={containerRef}
@@ -63,24 +63,27 @@ export default function ImageSlider() {
       <motion.div
         className="flex"
         animate={{ x: -currentIndex * containerWidth }}
-        transition={{ duration: 0.6, ease: [0.42, 0, 0.58, 1] }} // smooth cubic-bezier
+        transition={{ duration: 0.6, ease: [0.42, 0, 0.58, 1] }} 
         style={{
           width: `${images.length * 100}%`,
-          willChange: "transform", // GPU optimization
+          willChange: "transform", 
         }}
       >
         {images.map((src, index) => (
           <div
             key={index}
-            className="flex-shrink-0"
+            className="flex-shrink-0 relative"
             style={{ width: `${containerWidth}px` }}
           >
             <img
               src={src}
               alt={`Slide ${index}`}
-              className="h-64 w-full object-cover border-2 border-gray-300"
+              className="h-64 w-full object-cover "
               draggable={false}
             />
+            <div className="h-10 bg-black/50  p-1 absolute bottom-0 w-full">
+              <p className=" text-white text-xs">Slide {index + 1}</p>
+            </div>
           </div>
         ))}
       </motion.div>

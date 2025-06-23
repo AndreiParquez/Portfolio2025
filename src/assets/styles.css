@@ -223,3 +223,8 @@
     background: #ffffff;
     color: #000000;  
   }
+
+  .sldier{
+    background: linear-gradient(rgba(255, 255, 255, 0), transparent);
+    backdrop-filter: blur(20px);
+  }
