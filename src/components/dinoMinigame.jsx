@@ -41,7 +41,7 @@ export default function DinoMinigame() {
   }, []);
 
   useEffect(() => {
-    if(score > 10){
+    if(score > 9){
       bgRef.current.classList.add("flashing");
     }
     else{
@@ -82,7 +82,6 @@ export default function DinoMinigame() {
     if (!lastTimeRef.current) lastTimeRef.current = timestamp;
     const delta = (timestamp - lastTimeRef.current) / 1000; // seconds
     lastTimeRef.current = timestamp;
-    console.log(cactusXRef.current);
 
     // Increase speed with score
     speedRef.current = 200 + score * 5; // px/sec
