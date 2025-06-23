@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import runningSprite from "../assets/cat/running.gif";
+import jumpingSprite from "../assets/cat/jumping.gif";
 
 export default function DinoMinigame() {
   const dinoRef = useRef(null);
@@ -6,18 +8,21 @@ export default function DinoMinigame() {
   const [isJumping, setIsJumping] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [score, setScore] = useState(0);
-  const [cactusDuration, setCactusDuration] = useState(3); // Start slower
+  const [cactusDuration, setCactusDuration] = useState(3);
   const isGameOverRef = useRef(isGameOver);
 
+  useEffect(() => {
+    isGameOverRef.current = isGameOver;
+  }, [isGameOver]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === " " || event.keyCode === 32) {
         event.preventDefault();
         if (isGameOver) {
-          jump();
-        } else {
           restart();
+        } else {
+          jump();
         }
       }
     };
@@ -25,7 +30,7 @@ export default function DinoMinigame() {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [isGameOver]);
 
   // Gradually speed up cactus as score increases
   useEffect(() => {
@@ -46,14 +51,12 @@ export default function DinoMinigame() {
       }, 600);
 
       const checkCollision = () => {
-        const dinoTop = parseInt(
-          window.getComputedStyle(dinoRef.current).getPropertyValue("top")
-        );
         const cactusLeft = parseInt(
           window.getComputedStyle(cactusRef.current).getPropertyValue("left")
         );
 
-        if (cactusLeft < 60 && cactusLeft > 0 && dinoTop >= 140) {
+        // If dino is not jumping and cactus is close, it's a collision
+        if (cactusLeft < 10 && cactusLeft > 0 && !isJumping) {
           setIsGameOver(true);
           clearInterval(scoreInterval);
           cactusRef.current.style.animation = "none";
@@ -69,7 +72,7 @@ export default function DinoMinigame() {
       clearInterval(scoreInterval);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [isGameOver, cactusDuration]);
+  }, [isGameOver, cactusDuration, isJumping]);
 
   const jump = () => {
     if (isJumping || isGameOver) return;
@@ -89,19 +92,6 @@ export default function DinoMinigame() {
     cactusRef.current.style.animation = `cactusMove 2s infinite linear`;
   };
 
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === " " || event.keyCode === 32) {
-        event.preventDefault();
-        jump();
-      }
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
-
   return (
     <div
       className="relative w-full h-64 bg-gray-800 overflow-hidden"
@@ -109,11 +99,17 @@ export default function DinoMinigame() {
     >
       <div
         ref={dinoRef}
-        className="absolute left-12 bottom-0 w-12 h-12 bg-green-500 rounded jumpAnim"
-      ></div>
+        className={`absolute left-12 bottom-0 w-12 h-12 rounded jumpAnim`}
+      >
+        <img
+          src={isJumping ? jumpingSprite : runningSprite}
+          alt="Dino"
+          className="w-full h-full object-cover cat bg-amber-400"
+        />
+      </div>
       <div
         ref={cactusRef}
-        className="absolute bottom-0 left-full w-10 h-14 bg-red-500"
+        className="absolute bottom-0 left-full w-16 h-12 bg-red-500"
       ></div>
       <div className="absolute top-2 left-2 text-white text-sm font-mono">
         Score: {score}
