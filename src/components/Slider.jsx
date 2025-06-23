@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const images = [
   "https://picsum.photos/id/237/100/100",
@@ -11,8 +11,8 @@ const images = [
 
 export default function ImageSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const totalSlides = images.length;
+  const startX = useRef(null);
 
   const next = () => {
     setCurrentIndex((prev) => (prev + 1) % totalSlides);
@@ -24,8 +24,35 @@ export default function ImageSlider() {
     );
   };
 
+  // Touch event handlers for swipe navigation
+  const handleTouchStart = (e) => {
+    startX.current = e.touches[0].clientX;
+    console.log("Touch start at:", startX.current);
+  };
+
+  const handleTouchEnd = (e) => {
+    if (startX.current === null) return;
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX.current - endX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        next();
+      } else {
+        prev();
+      }
+    }
+    startX.current = null;
+
+    console.log("Touch end at:", endX, "Difference:", diff);
+  };
+
   return (
-    <div className="relative w-full max-w-6xl mx-auto overflow-hidden mt-10">
+    <div
+      className="relative w-full max-w-6xl z-40 mx-auto overflow-hidden mt-10"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      
+    >
       <motion.div
         className="flex"
         animate={{ x: `-${currentIndex * (100 / totalSlides)}%` }}
