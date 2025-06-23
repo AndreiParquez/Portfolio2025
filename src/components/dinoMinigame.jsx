@@ -1,6 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import runningSprite from "../assets/cat/running.gif";
 import jumpingSprite from "../assets/cat/jumping.gif";
+
+const GAME_WIDTH = 370; // px, adjust as needed
+const CACTUS_WIDTH = 32; // px, adjust as needed
 
 export default function DinoMinigame() {
   const dinoRef = useRef(null);
@@ -8,13 +11,95 @@ export default function DinoMinigame() {
   const [isJumping, setIsJumping] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [score, setScore] = useState(0);
-  const [cactusDuration, setCactusDuration] = useState(3);
-  const isGameOverRef = useRef(isGameOver);
+  
 
+  console.log(cactusRef.current);
+
+  // For manual animation
+  const requestRef = useRef();
+  const lastTimeRef = useRef();
+  const cactusXRef = useRef(GAME_WIDTH);
+  const speedRef = useRef(200); // px/sec, increases with score
+
+  // Handle jump
+  const jump = () => {
+    if (isJumping || isGameOver) return;
+
+    console.log("Jumping...");
+    setIsJumping(true);
+    dinoRef.current.classList.add("jump");
+    setTimeout(() => {
+      dinoRef.current.classList.remove("jump");
+      console.log("Jump ended");
+      setIsJumping(false);
+    }, 1000);
+  };
   useEffect(() => {
-    isGameOverRef.current = isGameOver;
-  }, [isGameOver]);
+    console.log("Jumping state changed:", isJumping);
+  }, [isJumping]);
 
+  // Handle restart
+  const restart = () => {
+    setScore(0);
+    setIsGameOver(false);
+    cactusXRef.current = GAME_WIDTH;
+    speedRef.current = 200;
+    lastTimeRef.current = undefined;
+    requestRef.current = requestAnimationFrame(gameLoop);
+  };
+
+  // Main game loop
+  const gameLoop = (timestamp) => {
+    if (isGameOver) return;
+    if (!lastTimeRef.current) lastTimeRef.current = timestamp;
+    const delta = (timestamp - lastTimeRef.current) / 1000; // seconds
+    lastTimeRef.current = timestamp;
+    console.log(cactusXRef.current);
+
+    // Increase speed with score
+    speedRef.current = 200 + score * 5; // px/sec
+
+    // Move cactus
+    cactusXRef.current -= speedRef.current * delta;
+    if (cactusXRef.current < -CACTUS_WIDTH) {
+      cactusXRef.current = GAME_WIDTH;
+      setScore((s) => s + 1);
+    }
+
+    // Update cactus position
+    if (cactusRef.current) {
+      cactusRef.current.style.left = `${cactusXRef.current}px`;
+    }
+
+    // Collision detection
+    // Collision detection using vertical position
+    if (cactusXRef.current < 96 && cactusXRef.current > 48) {
+      const dinoBottom = dinoRef.current?.getBoundingClientRect().bottom;
+      const gameBottom =
+        dinoRef.current?.parentElement?.getBoundingClientRect().bottom;
+
+      if (dinoBottom && gameBottom && gameBottom - dinoBottom < 10) {
+        // Dino is on the ground or nearly there
+        setIsGameOver(true);
+        return;
+      }
+    }
+
+    requestRef.current = requestAnimationFrame(gameLoop);
+  };
+
+  // Start/stop game loop
+  useEffect(() => {
+    if (!isGameOver) {
+      cactusXRef.current = GAME_WIDTH;
+      lastTimeRef.current = undefined;
+      requestRef.current = requestAnimationFrame(gameLoop);
+    }
+    return () => cancelAnimationFrame(requestRef.current);
+    // eslint-disable-next-line
+  }, [isGameOver, score]);
+
+  // Keyboard controls
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === " " || event.keyCode === 32) {
@@ -27,74 +112,14 @@ export default function DinoMinigame() {
       }
     };
     document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => document.removeEventListener("keydown", handleKeyDown);
+    // eslint-disable-next-line
   }, [isGameOver]);
-
-  // Gradually speed up cactus as score increases
-  useEffect(() => {
-    if (!isGameOver) {
-      setCactusDuration(Math.max(0.7, 2 - score * 0.02));
-    }
-  }, [score, isGameOver]);
-
-  useEffect(() => {
-    let scoreInterval = null;
-    let animationFrameId = null;
-
-    if (!isGameOver) {
-      cactusRef.current.style.animation = `cactusMove ${cactusDuration}s infinite linear`;
-
-      scoreInterval = setInterval(() => {
-        setScore((prev) => prev + 1);
-      }, 600);
-
-      const checkCollision = () => {
-        const cactusLeft = parseInt(
-          window.getComputedStyle(cactusRef.current).getPropertyValue("left")
-        );
-
-        // If dino is not jumping and cactus is close, it's a collision
-        if (cactusLeft < 10 && cactusLeft > 0 && !isJumping) {
-          setIsGameOver(true);
-          clearInterval(scoreInterval);
-          cactusRef.current.style.animation = "none";
-          cactusRef.current.style.left = `${cactusLeft}px`;
-          return;
-        }
-        animationFrameId = requestAnimationFrame(checkCollision);
-      };
-      animationFrameId = requestAnimationFrame(checkCollision);
-    }
-
-    return () => {
-      clearInterval(scoreInterval);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, [isGameOver, cactusDuration, isJumping]);
-
-  const jump = () => {
-    if (isJumping || isGameOver) return;
-    setIsJumping(true);
-    dinoRef.current.classList.add("jump");
-    setTimeout(() => {
-      dinoRef.current.classList.remove("jump");
-      setIsJumping(false);
-    }, 400);
-  };
-
-  const restart = () => {
-    setScore(0);
-    setIsGameOver(false);
-    setCactusDuration(2); // Reset to slow
-    cactusRef.current.style.left = "100%";
-    cactusRef.current.style.animation = `cactusMove 2s infinite linear`;
-  };
 
   return (
     <div
-      className="relative w-full h-64 bg-gray-800 overflow-hidden"
+      className="relative w-full max-w-xl h-64 bg-gray-800 overflow-hidden"
+      
       onClick={jump}
     >
       <div
@@ -109,7 +134,8 @@ export default function DinoMinigame() {
       </div>
       <div
         ref={cactusRef}
-        className="absolute bottom-0 left-full w-16 h-12 bg-red-500"
+        className="absolute bottom-0 w-8 h-12 bg-red-500"
+        style={{ left: cactusXRef.current }}
       ></div>
       <div className="absolute top-2 left-2 text-white text-sm font-mono">
         Score: {score}
