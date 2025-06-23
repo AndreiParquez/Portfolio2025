@@ -257,3 +257,15 @@
 .cat{
    image-rendering: pixelated;
 }
+.flashing {
+  animation: flash-bg-white 0.8s linear infinite;
+}
+
+@keyframes flash-bg-white {
+  0%, 100% {
+    background-color: inherit;
+  }
+  50% {
+    background-color: #fff;
+  }
+}

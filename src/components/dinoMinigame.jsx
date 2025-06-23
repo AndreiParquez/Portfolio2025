@@ -1,17 +1,19 @@
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import runningSprite from "../assets/cat/running.gif";
 import jumpingSprite from "../assets/cat/jumping.gif";
 import deathSprite from "../assets/cat/gameover.png";
 import idleSprite from "../assets/cat/idle.gif";
 import jumpSound from "../assets/audio/jump.mp3";
 import bgMusic from "../assets/audio/bg-music.mp3";
-import meowSound from "../assets/audio/meow.mp3";
+import meowSound from "../assets/audio/meowrgh.mp3";
+
 
 const GAME_WIDTH = 370; // px, adjust as needed
 const CACTUS_WIDTH = 32; // px, adjust as needed
 
 export default function DinoMinigame() {
   const dinoRef = useRef(null);
+  const bgRef = useRef(null);
   const cactusRef = useRef(null);
   const [isJumping, setIsJumping] = useState(false);
   const [isIdle, setIsIdle] = useState(true);
@@ -37,6 +39,15 @@ export default function DinoMinigame() {
       img.src = src;
     });
   }, []);
+
+  useEffect(() => {
+    if(score > 10){
+      bgRef.current.classList.add("flashing");
+    }
+    else{
+      bgRef.current.classList.remove("flashing");
+    }
+  }, [score]);
 
   // For manual animation
   const requestRef = useRef();
@@ -98,6 +109,10 @@ export default function DinoMinigame() {
         setIsDeath(true);
         setIsJumping(false);
         setIsIdle(false);
+        if (meowAudioRef.current) {
+          meowAudioRef.current.currentTime = 0;
+          meowAudioRef.current.play();
+        }
       
         console.log("Game Over!");
         bgMusicRef.current.pause();
@@ -155,6 +170,7 @@ export default function DinoMinigame() {
     <div
       className="relative w-full max-w-xl h-64  overflow-hidden"
       onClick={jump}
+      ref={bgRef}
     >
       <div
         ref={dinoRef}
@@ -183,24 +199,24 @@ export default function DinoMinigame() {
         Score: {score}
       </div>
       {isGameOver && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/80 text-white text-xl font-bold">
-          Game Over!{" "}
+        <div className="absolute inset-0 flex items-center justify-center  bg-black/25 text-white text-xs tracking-widest">
+          
           <button
-            className="ml-4 px-3 py-1 bg-white text-black"
+            className="ml-4 px-3 py-1 "
             onClick={restart}
           >
-            Restart
+             Game Over! Restart
           </button>
         </div>
       )}
 
       {!isGameStart && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/80 text-white text-xl font-bold">
+        <div className="absolute inset-0 flex items-center justify-center bg-black/25 text-white text-xs tracking-widest">
           <button
-            className="ml-4 px-3 py-1 bg-white text-black"
+            className="ml-4 px-3 py-1"
             onClick={startGame}
           >
-            Start
+            Click to start or Press Space ...
           </button>
         </div>
       )}
