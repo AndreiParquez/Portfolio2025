@@ -6,21 +6,27 @@ export default function DinoMinigame() {
  const [isJumping, setIsJumping] = useState(false);
  const [isGameOver, setIsGameOver] = useState(false);
  const [score, setScore] = useState(0);
+ const [cactusDuration, setCactusDuration] = useState(3); // Start slower
 
- // Use requestAnimationFrame for smoother, faster collision detection
+ // Gradually speed up cactus as score increases
+ useEffect(() => {
+  if (!isGameOver) {
+   // Decrease duration but not below 0.7s
+   setCactusDuration(Math.max(0.7, 2 - score * 0.02));
+  }
+ }, [score, isGameOver]);
+
  useEffect(() => {
   let scoreInterval = null;
   let animationFrameId = null;
 
   if (!isGameOver) {
-   cactusRef.current.style.animation = "cactusMove 1s infinite linear"; // Faster cactus
+   cactusRef.current.style.animation = `cactusMove ${cactusDuration}s infinite linear`;
 
-   // Faster score increment
    scoreInterval = setInterval(() => {
-    setScore((prev) => prev + 2); // Increase score faster
-   }, 80);
+    setScore((prev) => prev + 1);
+   }, 600);
 
-   // Collision detection using requestAnimationFrame
    const checkCollision = () => {
     const dinoTop = parseInt(
      window.getComputedStyle(dinoRef.current).getPropertyValue("top")
@@ -45,7 +51,7 @@ export default function DinoMinigame() {
    clearInterval(scoreInterval);
    cancelAnimationFrame(animationFrameId);
   };
- }, [isGameOver]);
+ }, [isGameOver, cactusDuration]);
 
  const jump = () => {
   if (isJumping || isGameOver) return;
@@ -54,14 +60,15 @@ export default function DinoMinigame() {
   setTimeout(() => {
    dinoRef.current.classList.remove("jump");
    setIsJumping(false);
-  }, 400); // Slightly faster jump
+  }, 400);
  };
 
  const restart = () => {
   setScore(0);
   setIsGameOver(false);
+  setCactusDuration(2); // Reset to slow
   cactusRef.current.style.left = "100%";
-  cactusRef.current.style.animation = "cactusMove 1s infinite linear";
+  cactusRef.current.style.animation = `cactusMove 2s infinite linear`;
  };
 
  return (
