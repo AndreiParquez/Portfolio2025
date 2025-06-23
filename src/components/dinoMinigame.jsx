@@ -1,6 +1,9 @@
 import { use, useEffect, useRef, useState } from "react";
 import runningSprite from "../assets/cat/running.gif";
 import jumpingSprite from "../assets/cat/jumping.gif";
+import jumpSound from "../assets/audio/jump.mp3";
+import bgMusic from "../assets/audio/bg-music.mp3";
+import meowSound from "../assets/audio/meow.mp3";
 
 const GAME_WIDTH = 370; // px, adjust as needed
 const CACTUS_WIDTH = 32; // px, adjust as needed
@@ -11,9 +14,17 @@ export default function DinoMinigame() {
   const [isJumping, setIsJumping] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [score, setScore] = useState(0);
-  
 
-  console.log(cactusRef.current);
+  const jumpAudioRef = useRef(null);
+  const meowAudioRef = useRef(null);
+  const bgMusicRef = useRef(null);
+
+  useEffect(() => {
+    jumpAudioRef.current = new Audio(jumpSound);
+    meowAudioRef.current = new Audio(meowSound);
+    bgMusicRef.current = new Audio(bgMusic);
+    bgMusicRef.current.loop = true;
+  }, []);
 
   // For manual animation
   const requestRef = useRef();
@@ -24,13 +35,14 @@ export default function DinoMinigame() {
   // Handle jump
   const jump = () => {
     if (isJumping || isGameOver) return;
-
-    console.log("Jumping...");
     setIsJumping(true);
     dinoRef.current.classList.add("jump");
+    if (jumpAudioRef.current) {
+      jumpAudioRef.current.currentTime = 0; 
+      jumpAudioRef.current.play();
+    }
     setTimeout(() => {
       dinoRef.current.classList.remove("jump");
-      console.log("Jump ended");
       setIsJumping(false);
     }, 600);
   };
@@ -51,6 +63,12 @@ export default function DinoMinigame() {
   // Main game loop
   const gameLoop = (timestamp) => {
     if (isGameOver) return;
+    if (!bgMusicRef.current.paused) {
+      bgMusicRef.current.play();
+    } else {
+      bgMusicRef.current.currentTime = 0; // Restart music if paused
+      bgMusicRef.current.play();
+    }
     if (!lastTimeRef.current) lastTimeRef.current = timestamp;
     const delta = (timestamp - lastTimeRef.current) / 1000; // seconds
     lastTimeRef.current = timestamp;
@@ -118,7 +136,6 @@ export default function DinoMinigame() {
   return (
     <div
       className="relative w-full max-w-xl h-64  overflow-hidden"
-      
       onClick={jump}
     >
       <div
