@@ -69,7 +69,7 @@ export default function ImageSlider() {
   };
 
   return (
-    <>
+    <div className="mt-10">
       <div className="my-4">
         <span className="text-zinc-300 text-xs px-2 rounded-md py-1 bg-zinc-700 text-start">
           Gallery
@@ -103,8 +103,8 @@ export default function ImageSlider() {
                 className="h-64 w-full object-cover "
                 draggable={false}
               />
-              <div className="h-10 bg-black/50  p-1 absolute bottom-0 w-full">
-                <p className=" text-white tracking-widest text-xs">{slide.title}</p>
+              <div className=" bg-black/50  p-1 px-3 absolute bottom-0 w-full">
+                <p className=" text-white tracking-widest font-semiboldtext-xs">{slide.title}</p>
                 <p className=" text-zinc-300 text-xs">{slide.subtitle}</p>
               </div>
             </div>
@@ -141,6 +141,6 @@ export default function ImageSlider() {
           </motion.button>
         </div>
       </div>
-    </>
+    </div>
   );
 }

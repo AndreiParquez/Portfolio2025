@@ -227,6 +227,7 @@ export default function DinoMinigame() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
+              onClick={startGame}
             >
               <p className="text-2xl text-center font-bold">
                 Just a Cat Jumping Game
