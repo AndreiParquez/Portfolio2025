@@ -9,6 +9,21 @@ const images = [
   ach2
 ];
 
+const slides = [
+  {
+    src: ach1,
+    alt: "Slide 1",
+    title: "Slide 1",
+    subtitle: "This is the first slide",
+  },
+  {
+    src: ach2,
+    alt: "Slide 2",
+    title: "Slide 2",
+    subtitle: "This is the second slide",
+  }
+]
+
 export default function ImageSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalSlides = images.length;
@@ -76,20 +91,21 @@ export default function ImageSlider() {
             willChange: "transform",
           }}
         >
-          {images.map((src, index) => (
+          {slides.map((slide, index) => (
             <div
               key={index}
               className="flex-shrink-0 relative"
               style={{ width: `${containerWidth}px` }}
             >
               <img
-                src={src}
-                alt={`Slide ${index}`}
+                src={slide.src}
+                alt={slide.alt}
                 className="h-64 w-full object-cover "
                 draggable={false}
               />
               <div className="h-10 bg-black/50  p-1 absolute bottom-0 w-full">
-                <p className=" text-white text-xs">Slide {index + 1}</p>
+                <p className=" text-white tracking-widest text-xs">{slide.title}</p>
+                <p className=" text-zinc-300 text-xs">{slide.subtitle}</p>
               </div>
             </div>
           ))}
