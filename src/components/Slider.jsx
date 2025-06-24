@@ -2,12 +2,11 @@ import { motion } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { RiArrowLeftSLine } from "react-icons/ri";
+import ach1 from "../assets/album/slide1.jpg";
+import ach2 from "../assets/album/slide2.jpg";
 const images = [
-  "https://picsum.photos/id/237/900/900",
-  "https://picsum.photos/id/238/900/900",
-  "https://picsum.photos/id/239/900/900",
-  "https://picsum.photos/id/240/900/900",
-  "https://picsum.photos/id/241/900/900",
+  ach1,
+  ach2
 ];
 
 export default function ImageSlider() {

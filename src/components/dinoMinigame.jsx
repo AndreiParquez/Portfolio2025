@@ -6,7 +6,7 @@ import idleSprite from "../assets/cat/idle.gif";
 import jumpSound from "../assets/audio/jump.mp3";
 import bgMusic from "../assets/audio/bg-music.mp3";
 import meowSound from "../assets/audio/meowrgh.mp3";
-
+import { motion, AnimatePresence } from "framer-motion";
 
 const GAME_WIDTH = 370; // px, adjust as needed
 const CACTUS_WIDTH = 32; // px, adjust as needed
@@ -41,10 +41,9 @@ export default function DinoMinigame() {
   }, []);
 
   useEffect(() => {
-    if(score > 9){
+    if (score > 9) {
       bgRef.current.classList.add("flashing");
-    }
-    else{
+    } else {
       bgRef.current.classList.remove("flashing");
     }
   }, [score]);
@@ -104,16 +103,14 @@ export default function DinoMinigame() {
         dinoRef.current?.parentElement?.getBoundingClientRect().bottom;
 
       if (dinoBottom && gameBottom && gameBottom - dinoBottom < 25) {
-        setIsGameOver(true);
-        setIsDeath(true);
-        setIsJumping(false);
-        setIsIdle(false);
         if (meowAudioRef.current) {
           meowAudioRef.current.currentTime = 0;
           meowAudioRef.current.play();
         }
-      
-        console.log("Game Over!");
+        setIsGameOver(true);
+        setIsDeath(true);
+        setIsJumping(false);
+        setIsIdle(false);
         bgMusicRef.current.pause();
         return;
       }
@@ -155,6 +152,8 @@ export default function DinoMinigame() {
         event.preventDefault();
         if (isGameOver) {
           restart();
+        } else if (!isGameStart) {
+          startGame();
         } else {
           jump();
         }
@@ -166,59 +165,90 @@ export default function DinoMinigame() {
   }, [isGameOver]);
 
   return (
-    <div
-      className="relative w-full max-w-xl h-64  overflow-hidden"
-      onClick={jump}
-      ref={bgRef}
-    >
+    <div className="mt-10 ">
+      <div className="my-4">
+        <span className="text-zinc-300 text-xs px-2 rounded-md py-1 bg-zinc-700 text-start">
+          Mini Games
+        </span>
+      </div>
       <div
-        ref={dinoRef}
-        className={`absolute left-12 bottom-0 w-12 h-12 rounded jumpAnim`}
+        className="relative  w-full max-w-xl h-64 font-pixellari rounded-t-xl text-sm border-b-4 border-zinc-800  overflow-hidden"
+        onClick={jump}
+        ref={bgRef}
       >
-        <img
-          src={
-            isJumping
-              ? jumpingSprite
-              : isDeath
-              ? deathSprite
-              : isIdle
-              ? idleSprite
-              : runningSprite
-          }
-          alt="Dino"
-          className="w-full h-full object-cover cat "
-        />
-      </div>
-      <div
-        ref={cactusRef}
-        className="absolute bottom-0 w-8 h-12 bg-red-500"
-        style={{ left: cactusXRef.current }}
-      ></div>
-      <div className="absolute top-2 left-2 text-white text-sm font-mono">
-        Score: {score}
-      </div>
-      {isGameOver && (
-        <div className="absolute inset-0 flex items-center justify-center  bg-black/25 text-white text-xs tracking-widest">
-          
-          <button
-            className="ml-4 px-3 py-1 "
-            onClick={restart}
-          >
-             Game Over! Restart
-          </button>
+        <div
+          ref={dinoRef}
+          className={`absolute left-12 bottom-0 w-12 h-12 rounded jumpAnim`}
+        >
+          <img
+            src={
+              isJumping
+                ? jumpingSprite
+                : isDeath
+                ? deathSprite
+                : isIdle
+                ? idleSprite
+                : runningSprite
+            }
+            alt="Dino"
+            className="w-full h-full object-cover cat "
+          />
         </div>
-      )}
+        <div
+          ref={cactusRef}
+          className="absolute bottom-0 w-8 h-12 bg-zinc-800"
+          style={{ left: cactusXRef.current }}
+        ></div>
+        <div className="absolute top-2 right-2 tracking-widest text-white  ">
+          {score}
+        </div>
 
-      {!isGameStart && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/25 text-white text-xs tracking-widest">
-          <button
-            className="ml-4 px-3 py-1"
-            onClick={startGame}
-          >
-            Click to start or Press Space ...
-          </button>
-        </div>
-      )}
+        <AnimatePresence>
+          {isGameOver && (
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center  bg-black/25 text-white text-xs tracking-widest"
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <button className="ml-4 px-3 py-1 " onClick={restart}>
+                Game Over! Restart
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {!isGameStart && (
+            <motion.div
+              className="absolute inset-0 flex flex-col items-center justify-center bg-black/25 text-white text-sm tracking-widest"
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <p className="text-2xl text-center font-bold">
+                Just a Cat Jumping Game
+              </p>
+              <motion.button
+                className="ml-4 px-3 py-1 text-zinc-400"
+                onClick={startGame}
+                initial={{ scale: 1 }}
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  ease: "easeInOut",
+                }}
+              >
+                Click to start or Press Space ...
+              </motion.button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

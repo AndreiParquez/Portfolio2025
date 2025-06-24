@@ -65,7 +65,7 @@ function Home() {
         <div className="flex w-full gap-4">
           <img
             src={imageSrc}
-            alt="mypic"
+            alt="Andrei Parquez Web Developer"
             className="w-24 h-24 rounded-full ring-2 ring-zinc-700 p-1 m-1"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -116,11 +116,12 @@ function Home() {
         </div>
         <Text />
         <Tech />
-        <Projects />
-        <SliderImage />
 
-        <Picture />
+        <Projects />
         <DinoMinigame />
+        <SliderImage />
+        <Picture />
+
         <Footer />
       </div>
     </div>
