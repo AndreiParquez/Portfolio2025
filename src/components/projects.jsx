@@ -1,9 +1,10 @@
-import React from "react";
+
 import { hover, motion } from "framer-motion";
 import projectPic from "../assets/project.jpg";
-import projectPic2 from "../assets/p2.png";
-import projectPic3 from "../assets/p3.png";
-import projectPic4 from "../assets/p4.png";
+import projectPic5 from "../assets/react-toast.png";
+import projectPic6 from "../assets/ss1.png";
+import projectPic7 from "../assets/exam.png";
+
 import { FaGithub } from "react-icons/fa6";
 import { FiGlobe } from "react-icons/fi";
 import Footer from "./footer.jsx";
@@ -18,26 +19,36 @@ function projects() {
       alt: "Andrei Parquez Web Projects PortfolioLost Piece Game",
       source: "https://github.com/AndreiParquez/Lostpiecewebsite",
       visit: "https://lostpiece.netlify.app/",
-      hoverColor: "from-red-900",
+      hoverColor: "group-hover:bg-gradient-to-b group-hover:from-red-900 group-hover:to-transparent",
     },
     {
-      title: "Annabell's Closet",
-      description: "A react web application for annabells ukay-ukay bussiness",
-      image: projectPic2,
-      alt: "Andrei Parquez Web Projects Portfolio Annabell's Closet",
-      source: "https://github.com/AndreiParquez/AnnabellsCloset",
-      visit: "https://annabellscloset.netlify.app/",
-      hoverColor: "from-yellow-900",
+      title: "React-Toast-Drei",
+      description: "A toast notification library for React",
+      image: projectPic5,
+      alt: "Andrei Parquez Web Projects Portfolio React-Toast-Drei",
+      source: "https://github.com/AndreiParquez/react-toast-drei-web",
+      visit: "https://react-toast-drei-web.vercel.app/",
+      hoverColor: "group-hover:bg-gradient-to-b group-hover:from-purple-900 group-hover:to-transparent",
     },
     {
-      title: "Anime Tambayan",
-      description: "Anime Streaming website using Animedex Api",
-      image: projectPic4,
-      alt: "Andrei Parquez Web Projects Portfolio Anime Tambayan",
-      source: "https://github.com/AndreiParquez/AnimeTambayan",
-      visit: "https://animetambayan.netlify.app/",
-      hoverColor: "from-purple-900",
+      title: "Inventive Media Attendance System",
+      description: "A web-based attendance management system for Inventive Media",
+      image: projectPic6,
+      alt: "Andrei Parquez Web Projects Portfolio Inventive Media Attendance System",
+      source: "https://github.com/santosmarc14/inventive_media_exam_web_app",
+      visit: "https://inventivemediaattendance.netlify.app/",
+      hoverColor: "group-hover:bg-gradient-to-b group-hover:from-blue-900 group-hover:to-transparent",
     },
+        {
+      title: "Inventive Media Exam App",
+      description: "A web-based exam app  for Inventive Media",
+      image: projectPic7,
+      alt: "Andrei Parquez Web Projects Portfolio Inventive Media Exam App",
+      source: "https://github.com/santosmarc14/inventive_media_exam_web_app",
+      visit: "https://inventivemediaexam.netlify.app/",
+      hoverColor: "group-hover:bg-gradient-to-b group-hover:from-green-900 group-hover:to-transparent",
+    },
+
   ];
   return (
     <>
@@ -77,12 +88,12 @@ function projects() {
             {projects.map((project, index) => (
               <div key={index} className="group">
                 <div
-                  className={`flex flex-col w-full bg-gradient-to-b from-zinc-800 to-transparent rounded-md px-6 pt-5 overflow-hidden hover:cursor-pointer group-hover:${project.hoverColor}`}
+                  className={`flex flex-col w-full bg-gradient-to-b from-zinc-800 to-transparent rounded-md px-6 pt-5 overflow-hidden hover:cursor-pointer ${project.hoverColor} hover:shadow-lg transition-all duration-300`}
                 >
                   <motion.img
                     src={project.image}
                     alt={project.alt}
-                    className="h-64 rounded-sm ring ring-zinc-700 object-cover"
+                    className="h-44 rounded-sm ring ring-zinc-700 object-cover"
                     initial={{ y: 10 }}
                     whileHover={{ y: -5 }}
                     transition={{ type: "spring", stiffness: 300 }}

@@ -48,16 +48,6 @@ function Home() {
   const [isHovered, setIsHovered] = useState(false);
   const [imageSrc, setImageSrc] = useState(myPic);
 
-  const handleMouseEnter = () => {
-    setImageSrc(myPicCartoon);
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setImageSrc(myPic);
-    setIsHovered(false);
-  };
-
   return (
     <div>
       <div className="w-full h-52 mx-auto px-6">
@@ -67,8 +57,6 @@ function Home() {
             src={imageSrc}
             alt="Andrei Parquez Web Developer"
             className="w-24 h-24 rounded-full ring-2 ring-zinc-700 p-1 m-1"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
           />
           <div className="flex flex-col justify-center">
             <h1 className="text-center font-semibold tracking-widest text-white text-xl xs:text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl">

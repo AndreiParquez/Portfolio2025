@@ -1,5 +1,4 @@
-import React from "react";
-import projectPic from "../assets/image.png";
+import projectPic from "../assets/p1.png";
 import projectPic2 from "../assets/project.jpg";
 import { MdArrowRightAlt } from "react-icons/md";
 import { motion } from "framer-motion";
