@@ -1,4 +1,3 @@
-
 import { hover, motion } from "framer-motion";
 import projectPic from "../assets/project.jpg";
 import projectPic5 from "../assets/react-toast.png";
@@ -19,7 +18,8 @@ function projects() {
       alt: "Andrei Parquez Web Projects PortfolioLost Piece Game",
       source: "https://github.com/AndreiParquez/Lostpiecewebsite",
       visit: "https://lostpiece.netlify.app/",
-      hoverColor: "group-hover:bg-gradient-to-b group-hover:from-red-900 group-hover:to-transparent",
+      hoverColor:
+        "group-hover:bg-gradient-to-b group-hover:from-red-900 group-hover:to-transparent",
     },
     {
       title: "React-Toast-Drei",
@@ -28,27 +28,30 @@ function projects() {
       alt: "Andrei Parquez Web Projects Portfolio React-Toast-Drei",
       source: "https://github.com/AndreiParquez/react-toast-drei-web",
       visit: "https://react-toast-drei-web.vercel.app/",
-      hoverColor: "group-hover:bg-gradient-to-b group-hover:from-purple-900 group-hover:to-transparent",
+      hoverColor:
+        "group-hover:bg-gradient-to-b group-hover:from-purple-900 group-hover:to-transparent",
     },
     {
       title: "Inventive Media Attendance System",
-      description: "A web-based attendance management system for Inventive Media",
+      description:
+        "A web-based attendance management system for Inventive Media",
       image: projectPic6,
       alt: "Andrei Parquez Web Projects Portfolio Inventive Media Attendance System",
       source: "https://github.com/santosmarc14/inventive_media_exam_web_app",
-      visit: "https://inventivemediaattendance.netlify.app/",
-      hoverColor: "group-hover:bg-gradient-to-b group-hover:from-blue-900 group-hover:to-transparent",
+      visit: "",
+      hoverColor:
+        "group-hover:bg-gradient-to-b group-hover:from-blue-900 group-hover:to-transparent",
     },
-        {
+    {
       title: "Inventive Media Exam App",
       description: "A web-based exam app  for Inventive Media",
       image: projectPic7,
       alt: "Andrei Parquez Web Projects Portfolio Inventive Media Exam App",
       source: "https://github.com/santosmarc14/inventive_media_exam_web_app",
-      visit: "https://inventivemediaexam.netlify.app/",
-      hoverColor: "group-hover:bg-gradient-to-b group-hover:from-green-900 group-hover:to-transparent",
+      visit: "",
+      hoverColor:
+        "group-hover:bg-gradient-to-b group-hover:from-green-900 group-hover:to-transparent",
     },
-
   ];
   return (
     <>
@@ -114,16 +117,18 @@ function projects() {
                         Source
                       </button>
                     </a>
-                    <a
-                      href={project.visit}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <button className="flex items-center bg-white text-zinc-900 p-2 rounded-md px-5 hover:cursor-pointer">
-                        <FiGlobe className="mr-2" />
-                        Visit
-                      </button>
-                    </a>
+                    {project.visit && (
+                      <a
+                        href={project.visit}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <button className="flex items-center bg-white text-zinc-900 p-2 rounded-md px-5 hover:cursor-pointer">
+                          <FiGlobe className="mr-2" />
+                          Visit
+                        </button>
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
