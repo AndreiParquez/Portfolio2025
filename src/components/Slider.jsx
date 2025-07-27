@@ -100,6 +100,7 @@ export default function ImageSlider() {
               <img
                 src={slide.src}
                 alt={slide.alt}
+                loading="lazy"
                 className="h-64 w-full object-cover "
                 draggable={false}
               />

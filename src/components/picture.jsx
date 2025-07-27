@@ -38,6 +38,7 @@ function Picture() {
           <img
             src={ach2}
             alt="Github"
+            loading="lazy"
             className=" h-24 rounded-md object-contain"
           />
         </div>
@@ -49,6 +50,7 @@ function Picture() {
         >
           <img
             src={ach3}
+            loading="lazy"
             alt="Code"
             className=" rounded-md h-24 object-contain"
           />
@@ -62,6 +64,7 @@ function Picture() {
           <img
             src={ach1}
             alt="Earn"
+            loading="lazy"
             className=" h-24 rounded-md object-contain"
           />
         </div>
@@ -74,6 +77,7 @@ function Picture() {
           <img
             src={ach4}
             alt="Earn"
+            loading="lazy"
             className=" h-24 rounded-md object-contain"
           />
         </div>

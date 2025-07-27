@@ -26,6 +26,7 @@ function ProjectsHome() {
         >
           <img
             src={projectPic2}
+            loading="lazy"
             alt="Andrei Parquez Web Developer Project Lost Piece"
             className="h-48 md:h-48 lg:h-32 rounded-md ring ring-zinc-700 object-cover"
           />
@@ -45,6 +46,7 @@ function ProjectsHome() {
         >
           <img
             src={projectPic}
+            loading="lazy"
             alt="Andrei Parquez Web Developer Project Annabell's Closet"
             className="h-48 md:h-48 lg:h-32 rounded-md ring ring-zinc-700 object-cover"
           />
