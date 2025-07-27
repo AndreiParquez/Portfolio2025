@@ -1,4 +1,4 @@
-import projectPic from "../assets/p1.png";
+import projectPic from "../assets/react-toast.png";
 import projectPic2 from "../assets/project.jpg";
 import { MdArrowRightAlt } from "react-icons/md";
 import { motion } from "framer-motion";
@@ -48,9 +48,9 @@ function ProjectsHome() {
             alt="Andrei Parquez Web Developer Project Annabell's Closet"
             className="h-48 md:h-48 lg:h-32 rounded-md ring ring-zinc-700 object-cover"
           />
-          <p className="text-white text-sm my-2">Annabell's Closet</p>
+          <p className="text-white text-sm my-2">React Toast Drei</p>
           <p className="text-gray-300 text-xs">
-            A simple ecommerce ukay - ukay website using react and firebase.{" "}
+            A toast notification library for React{" "}
           </p>
         </motion.a>
       </div>
