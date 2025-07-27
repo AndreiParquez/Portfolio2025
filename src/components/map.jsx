@@ -3,6 +3,8 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { createRoot } from "react-dom/client";
 import {motion} from "framer-motion";
+import dasmaImage from "../assets/dasma.jpg";
+import flagImage from "../assets/flag.png";
 
 const Map = () => {
   const mapContainer = useRef(null);
@@ -57,8 +59,8 @@ const Map = () => {
             transition={{ duration: 0.7, ease: "easeOut" }}
             style={{ WebkitBackdropFilter: "blur(20px)" }}
           >
-            <img src="/src/assets/dasma.jpg" className="size-5 ring-2  rounded-full border-2 border-zinc-800" alt="location" />
-            <p className="flex justify-center items-center">Dasmariñas, Cavite, Philippines <img src="/src/assets/flag.png" className="size-6" alt="flag" /></p>
+            <img src={dasmaImage} className="size-5 ring-2  rounded-full border-2 border-zinc-800" alt="location" />
+            <p className="flex justify-center items-center">Dasmariñas, Cavite, Philippines <img src={flagImage} className="size-6" alt="flag" /></p>
           </motion.div>
         );
       });
