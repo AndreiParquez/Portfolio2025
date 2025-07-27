@@ -5,11 +5,12 @@ import {
   FaHtml5,
   FaCss3Alt,
   FaNodeJs,
-  FaPhp,
   FaPython,
+  FaLaravel,
+  FaGitAlt,
 } from "react-icons/fa";
-import { SiTailwindcss, SiUnity, SiMysql } from "react-icons/si";
-
+import { SiTailwindcss, SiUnity, SiMysql} from "react-icons/si";
+import { BiLogoTypescript } from "react-icons/bi";
 const techStacks = [
   {
     name: "React.js",
@@ -43,6 +44,24 @@ const techStacks = [
     name: "MySQL",
     icon: <SiMysql className="text-gray-500 group-hover:text-blue-500" />,
   },
+  {
+    name: "Python",
+    icon: <FaPython className="text-gray-500 group-hover:text-blue-400" />,
+  },
+  {
+    name: "Laravel",
+    icon: <FaLaravel className="text-gray-500 group-hover:text-red-600" />,
+  },
+  {
+    name: "Git",
+    icon: <FaGitAlt className="text-gray-500 group-hover:text-orange-500" />,
+  },
+  {
+    name: "TypeScript",
+    icon: <BiLogoTypescript className="text-gray-500 group-hover:text-blue-600" />,
+  }
+
+
 ];
 
 function Tech() {
