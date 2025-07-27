@@ -11,7 +11,7 @@ const Map = () => {
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json', 
-      center: [120.9803890, 14.4141763], 
+      center: [120.936778, 14.345028], 
       zoom: 2, 
       attributionControl: false,
     });
@@ -23,14 +23,14 @@ const Map = () => {
     addressElement.className = 'address-text';
 
     const root = createRoot(addressElement);
-    root.render(<p className=''>📌 Bacoor, Cavite, Philippines</p>);
+    root.render(<div className='flex justify-center items-center'><img src="/src/assets/dasma.jpg" alt="location" /> <p>Dasmariñas, Cavite, Philippines</p></div>);
 
     const isMarkerWithinBounds = (lngLat) => {
       const bounds = map.getBounds();
       return bounds.contains(lngLat);
     };
 
-    const markerLngLat = [120.9803890, 14.4141763];
+    const markerLngLat = [120.936778, 14.345028];
     if (isMarkerWithinBounds(markerLngLat)) {
       new maplibregl.Marker({ element: markerElement })
         .setLngLat(markerLngLat)
@@ -43,7 +43,7 @@ const Map = () => {
 
     map.on('load', () => {
       map.flyTo({
-        center: [120.9803890, 14.4141763],
+        center: [120.936778, 14.345028],
         zoom: 10,
         speed: 0.8, 
         curve: 1,
