@@ -168,7 +168,7 @@ export default function DinoMinigame() {
     <div className="mt-10 ">
       <div className="my-4">
         <span className="text-zinc-300 text-xs px-2 rounded-md py-1 bg-zinc-700 text-start">
-          Mini Games
+          Mini Game
         </span>
       </div>
       <div

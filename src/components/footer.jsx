@@ -4,7 +4,7 @@ import { MdEmail } from "react-icons/md";
 
 function footer() {
   return (
-    <div className='flex justify-between'>
+    <div className='flex mt-12 justify-between'>
         <div className='flex  items-center justify-center py-4 space-x-2'>
             <a 
                 href='https://github.com/AndreiParquez' 

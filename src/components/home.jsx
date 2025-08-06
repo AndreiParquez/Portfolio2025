@@ -11,6 +11,7 @@ import Footer from "./footer.jsx";
 import Picture from "./picture.jsx";
 import SliderImage from "./Slider.jsx";
 import DinoMinigame from "./dinoMinigame.jsx";
+import Experience from "./experience.jsx";
 
 const rollingTextVariants = {
   animate: {
@@ -104,12 +105,11 @@ function Home() {
         </div>
         <Text />
         <Tech />
-
         <Projects />
+        <Experience />
         <DinoMinigame />
         <SliderImage />
         <Picture />
-
         <Footer />
       </div>
     </div>
