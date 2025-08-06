@@ -10,7 +10,7 @@ export default function experience() {
         <div>
           <div className="flex justify-between items-center">
             <div>
-              <p className="text-sm text-white font-semibold">
+              <p className="text-sm text-white">
                 Front-End Web Developer Intern
               </p>
               <p className="text-xs text-gray-300">Inventive Media | 2025</p>
@@ -47,7 +47,7 @@ export default function experience() {
         <div>
           <div className="flex justify-between items-center">
             <div>
-              <p className="text-sm text-white font-semibold">
+              <p className="text-sm text-white ">
                 Freelance Web Developer
               </p>
               <p className="text-xs text-gray-300">Self-employed | 2023-2025</p>
